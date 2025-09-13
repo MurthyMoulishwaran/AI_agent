@@ -1,46 +1,38 @@
-# 🎓 Student Data Retrieval Agent using n8n
+# Student Data Retrieval Agent — n8n + Local LLM
 
 ## 📌 Overview  
-This project demonstrates an **AI-like data retrieval agent** built with **n8n** that fetches and filters student information from a structured dataset using **SQL queries**. It automates student data search, reducing manual effort and enabling quick insights.
+This project demonstrates how to build a **data retrieval agent** using **n8n** and a **local LLM**.  
+The workflow accepts **natural-language queries**, converts them into **safe, parameterized SQL** using a locally hosted LLM, executes the queries against a **student database**, and returns structured results automatically.
 
 ---
 
 ## 🔹 Features  
-- ✅ Automated query handling (e.g., *“Show students with marks above 80”*).  
-- ✅ Seamless **SQL database integration**.  
-- ✅ Real-time student record retrieval.  
-- ✅ Extensible workflow for larger datasets and complex queries.  
-- ✅ Acts as a **data assistant** for academic use cases.  
+- 🧑‍💻 **Natural Language to SQL**: Users can query in plain English.  
+- 🤖 **Local LLM Integration**: LLM runs on the developer’s machine, exposed via an **OpenAI-compatible API**.  
+- 🔐 **Privacy-First**: No external API calls, all processing happens locally.  
+- 🛡️ **Safe Queries**: SQL generation is validated with column whitelists, parameterization, and query limits.  
+- ⚡ **Automated Retrieval**: Returns filtered student information in real-time.  
+- 🔄 **Extensible**: Workflow can be extended to other datasets or UI integrations.
 
 ---
 
 ## 🔹 Tech Stack  
 - **n8n** – Workflow automation  
-- **SQL (MySQL/Postgres/SQLite)** – Database querying  
-- **Database** – Student dataset storage  
-- **Webhook/API** – (Optional) for external query execution  
+- **Local LLM** – GPT4All / LocalAI / LLaMA-based model (OpenAI API-compatible)  
+- **SQL Database** – SQLite / MySQL / PostgreSQL  
+- **Nodes Used** – Webhook, Function, HTTP Request (LLM), SQL Node, Response Node  
 
 ---
 
-## 🔹 Workflow Architecture  
-1. **Trigger Node** – Accepts input query (manual/webhook/scheduled).  
-2. **Function Node** – Preprocesses query if needed.  
-3. **SQL Node** – Executes query on the student dataset.  
-4. **Output Node** – Returns structured results (JSON/Table/CSV).  
+## 🔹 Architecture  
+
+**Workflow Steps:**  
+1. **Trigger Node** – Accepts natural-language query (manual input, webhook, or UI).  
+2. **Function Node** – Prepares schema + formats query prompt.  
+3. **Local LLM** – Converts NL query into a parameterized SQL statement.  
+4. **Validation Layer** – Ensures only safe, whitelisted SQL commands pass through.  
+5. **SQL Node** – Executes validated SQL query on student database.  
+6. **Output Node** – Returns structured results (JSON, CSV, or table).  
 
 ---
 
-## 🔹 Impact  
-- ⏱️ Saves time by automating student data retrieval.  
-- 📊 Improves accessibility of academic datasets.  
-- 🔗 Showcases integration of **SQL + n8n automation**.  
-
----
-
-## 🚀 Getting Started  
-1. Install and set up **n8n**.  
-2. Connect your **SQL database** with the student dataset.  
-3. Import the provided workflow into n8n.  
-4. Run the workflow and query student data in real time.  
-
----
