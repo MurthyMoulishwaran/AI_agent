@@ -44,10 +44,3 @@ This project demonstrates an **AI-like data retrieval agent** built with **n8n**
 4. Run the workflow and query student data in real time.  
 
 ---
-
-## 📸 Screenshots  
-(Add screenshots of your n8n workflow canvas and query outputs here for portfolio/demo purposes.)  
-
----
-
-## 📂 Repository Structure  
